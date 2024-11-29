@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: eshop
+# ===============================
+# = DATA SOURCE
+# ===============================
+# Set here configurations for the database connection
+  datasource:
+    url: jdbc:postgresql://localhost:5433/webshop
+    username: postgres
+    password: 123
+    driver-class-name: org.postgresql.Driver
+# ===============================
+# = JPA / HIBERNATE
+# ===============================
+# Show or not log for each sql query
+  jpa:
+    show-sql: true
+# Hibernate ddl auto (create, create-drop, update): with "create-drop" the database
+# schema will be automatically created afresh for every start of application
+    hibernate:
+      ddl-auto: update
+
+  # Allows Hibernate to generate SQL optimized for a particular DBMS
+  security:
+    user:
+      name: user
+      password: 123
+eshop:
+    app:
+      jwtSecret: =======cheto=====
+      jwtExpirationMs: 86400000

@@ -9,9 +9,11 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title th:text="${title}"></title>
+    <title>Регистрация</title>
 </head>
 <body>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -28,10 +30,7 @@
                     <a class="nav-link" th:href="@{/}" href="#">на главную</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/admin}" href="#">панель администрирования</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/logout}" href="#">выход</a>
+                    <a class="nav-link" th:href="@{/shop}" href="#">каталог</a>
                 </li>
 
             </ul>
@@ -40,21 +39,36 @@
     </div>
 </nav>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <form th:action="@{/admin/categories/add}" method="post" th:object="${category}">
-                <input type="hidden" name="id"  th:field="*{id}">
-                <div class="form-group">
-                    <label for="name">Название</label>
-                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"  placeholder="Введите название">
-                </div>
+    <div class="col-sm-6">
+        <h3 style="margin-top: 10px">Регистрация</h3>
+        <p>Заполните данные для регистрации</p>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label for="firstName">Имя</label>
+                <input type="text" name="firstName" id="firstName" required placeholder="Ваше имя" class="form-control form-control-lg">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Фамилия</label>
+                <input type="text" name="lastName" id="lastName" required placeholder="Ваша фамилия" class="form-control form-control-lg">
+            </div>
+            <div class="form-group">
+                <label for="email">Почтовый адрес</label>
+                <input type="email" class="form-control form-control-lg" required minlength="6" placeholder="Почта" name="email" id="email"
+                       aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">Мы не передадим ваши данные никому, правда</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" class="form-control form-control-lg" required placeholder="Пароль" name="password"
+                       id="password">
+            </div>
 
-                <button type="submit" class="btn btn-primary">Подтвердить</button>
-            </form>
-        </div>
+            <input type="submit" value="Зарегистрироваться" class="btn btn-primary btn-block">
+            <span style="margin-top: 10px">Если есть аккаунт, <a class="linkControl" href="./login.html"
+                                                                      th:href="@{/login}">Войти</a></span>
+        </form>
     </div>
 </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
